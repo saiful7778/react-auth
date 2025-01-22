@@ -1,7 +1,6 @@
-import { getItem, setItem } from "@/utils/localStorage";
+import type { DispatchAction } from "@/types";
+import { getItem, removeItem, setItem } from "@/utils/localStorage";
 import { useState } from "react";
-
-type DispatchAction<T> = T | ((prevState: T) => T);
 
 export default function useLocalStorage<T>(key: string, initialValue: T) {
   const [value, setValue] = useState(() => {
@@ -22,5 +21,10 @@ export default function useLocalStorage<T>(key: string, initialValue: T) {
     }
   }
 
-  return [value, handleDispatch] as const;
+  function clearState() {
+    setValue(undefined as T);
+    removeItem(key);
+  }
+
+  return [value, handleDispatch, clearState] as const;
 }
