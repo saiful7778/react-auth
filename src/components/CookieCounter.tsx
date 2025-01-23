@@ -6,7 +6,9 @@ const CookieCounter: React.FC = () => {
 
   return (
     <div className="flex w-full max-w-xs flex-col items-center justify-center gap-4 rounded-md border p-4">
-      <div className="text-xl font-bold text-nowrap">Store in browser cookie</div>
+      <div className="text-nowrap text-xl font-bold">
+        Store in browser cookie
+      </div>
       <div className="text-xl font-bold">{counterValue}</div>
       <div className="flex items-center justify-center gap-2">
         <Button

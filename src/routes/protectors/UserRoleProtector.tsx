@@ -7,7 +7,9 @@ const UserRoleProtector: React.FC<{
   children: React.ReactNode;
   userRole: UserRole[];
 }> = ({ children, userRole }) => {
+  
   const { user, handleLogout } = useAuth();
+
   if (!userRole.includes(user.role!)) {
     handleLogout();
     return <Navigate to={default_auth_redirect} />;

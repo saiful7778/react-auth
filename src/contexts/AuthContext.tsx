@@ -7,7 +7,7 @@ import type {
   DispatchAction,
   UserType,
 } from "@/types";
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 interface AuthContextProps {
   user: Partial<UserType>;
@@ -32,16 +32,22 @@ const AuthContext = createContext<AuthContextProps | null>(null);
 const AuthContextProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  // user data
   const [user, setUser, clearUserState] = useLocalStorage<
     AuthContextProps["user"]
   >("user", {});
+
+  // auth data
   const [auth, setAuth, clearAuthState] = useLocalStorage<
     AuthContextProps["auth"]
   >("auth", {});
+
+  // access token
   const [accessToken, setAccessToken, clearAccessTokenState] = useCookie(
     "access_token",
     "",
   );
+  // refresh token
   const [refreshToken, setRefreshToken, clearRefreshTokenState] = useCookie(
     "refresh_token",
     "",
