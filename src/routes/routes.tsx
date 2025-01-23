@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    errorElement: <ErrorPage/>,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
         path: "/admin",
         element: (
           <PrivateProtector>
-            <UserRoleProtector userRole={["admin"]}>
+            <UserRoleProtector userRole={["admin", "superadmin"]}>
               <PageTitle title="Admin access">
                 <Admin />
               </PageTitle>

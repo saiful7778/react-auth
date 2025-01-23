@@ -9,7 +9,7 @@ const PrivateProtector: React.FC<{ children: React.ReactNode }> = ({
   const { pathname } = useLocation();
 
   if (!isLogged) {
-    <Navigate to={default_auth_redirect} state={{ from: { pathname } }} />;
+    return <Navigate to={default_auth_redirect} state={{ from: { pathname } }} />;
   }
   return children;
 };

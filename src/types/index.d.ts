@@ -29,14 +29,15 @@ export type AuthType = {
   token_Type: string;
 };
 
-export interface AuthApiResponse
-  extends ApiResponseType<{
-    id: number;
-    name: string;
-    email: string;
-    role: UserRole;
-    avatar?: string | undefined | null;
-  }> {
+export interface UserProfileType {
+  id: number;
+  name: string;
+  email: string;
+  role: UserRole;
+  avatar: string | undefined;
+}
+
+export interface AuthApiResponse extends ApiResponseType<UserProfileType> {
   token_type: string;
   access_token: string;
   refresh_token: string;

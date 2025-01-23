@@ -87,15 +87,15 @@ const AuthContextProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const handleLogout = async () => {
-    axiosPublic.post(
-      "/api/logout",
-      {},
-      {
-        headers: {
-          Authorization: `${auth?.token_Type} ${auth?.access_token || accessToken}`,
-        },
-      },
-    );
+    // axiosPublic.post(
+    //   "/api/logout",
+    //   {},
+    //   {
+    //     headers: {
+    //       Authorization: `${auth?.token_Type} ${auth?.access_token || accessToken}`,
+    //     },
+    //   },
+    // );
     clearAccessTokenState();
     clearRefreshTokenState();
     clearUserState();
