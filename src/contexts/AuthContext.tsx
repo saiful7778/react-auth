@@ -15,9 +15,9 @@ interface AuthContextProps {
   auth: Partial<AuthType>;
   setAuth: (action: DispatchAction<Partial<AuthType>>) => void;
   accessToken: string | undefined;
-  setAccessToken: (action: DispatchAction<string | undefined>) => void;
+  setAccessToken: (action: DispatchAction<string>) => void;
   refreshToken: string | undefined;
-  setRefreshToken: (action: DispatchAction<string | undefined>) => void;
+  setRefreshToken: (action: DispatchAction<string>) => void;
   handleLogin: (email: string, password: string) => Promise<void>;
   handleRegister: (
     userData: Partial<AuthContextProps["user"]>,
@@ -38,10 +38,14 @@ const AuthContextProvider: React.FC<{ children: React.ReactNode }> = ({
   const [auth, setAuth, clearAuthState] = useLocalStorage<
     AuthContextProps["auth"]
   >("auth", {});
-  const [accessToken, setAccessToken, clearAccessTokenState] =
-    useCookie("access_token");
-  const [refreshToken, setRefreshToken, clearRefreshTokenState] =
-    useCookie("refresh_token");
+  const [accessToken, setAccessToken, clearAccessTokenState] = useCookie(
+    "access_token",
+    "",
+  );
+  const [refreshToken, setRefreshToken, clearRefreshTokenState] = useCookie(
+    "refresh_token",
+    "",
+  );
 
   const isLogged =
     !!user &&

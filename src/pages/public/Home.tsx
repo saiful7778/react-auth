@@ -1,3 +1,5 @@
+import CookieCounter from "@/components/CookieCounter";
+import LocalStorageCounter from "@/components/LocalStorageCounter";
 import { Button } from "@/components/shadcn/ui/button";
 import useAuth from "@/hooks/useAuth";
 import { default_auth_redirect } from "@/lib/staticData";
@@ -37,6 +39,10 @@ const Home: React.FC = () => {
           <Link to="/login">Login</Link>
         </Button>
       )}
+      <div className="flex items-center gap-2">
+        <CookieCounter />
+        <LocalStorageCounter />
+      </div>
     </div>
   );
 };
